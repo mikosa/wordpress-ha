@@ -12,9 +12,9 @@ spec:
   code: # where to find the code
     # contentSubpath: wp-content/
     # by default, code get's an empty dir. Can be one of the following:
-    git:
-      repository: https://github.com/example.com
-      # reference: master
+    # git:
+    #   repository: https://github.com/example.com
+    #   # reference: master
       # env:
       #   - name: SSH_RSA_PRIVATE_KEY
       #     valueFrom:
@@ -28,17 +28,17 @@ spec:
 
   media: # where to find the media files
     # by default, code get's an empty dir. Can be one of the following:
-    gcs: # store files using Google Cloud Storage
-      bucket: calins-wordpress-runtime-playground
-      prefix: mysite/
-      env:
-        - name: GOOGLE_CREDENTIALS
-          valueFrom:
-            secretKeyRef:
-              name: mysite
-              key: google_application_credentials.json
-        - name: GOOGLE_PROJECT_ID
-          value: development
+    # gcs: # store files using Google Cloud Storage
+    #   bucket: calins-wordpress-runtime-playground
+    #   prefix: mysite/
+    #   env:
+    #     - name: GOOGLE_CREDENTIALS
+    #       valueFrom:
+    #         secretKeyRef:
+    #           name: mysite
+    #           key: google_application_credentials.json
+    #     - name: GOOGLE_PROJECT_ID
+    #       value: development
     # persistentVolumeClaim: {}
     # hostPath: {}
     # emptyDir: {}
@@ -87,6 +87,6 @@ spec:
   envFrom: []
 
   # secret containg HTTPS certificate
-  tlsSecretRef: mysite-tls
+  # tlsSecretRef: mysite-tls
   # extra ingress annotations
   ingressAnnotations: {}
