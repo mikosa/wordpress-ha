@@ -45,25 +45,13 @@ spec:
   bootstrap: # wordpress install config
     env:
       - name: WORDPRESS_BOOTSTRAP_USER
-        valueFrom:
-          secretKeyRef:
-            name: mysite
-            key: USER
+        value: user
       - name: WORDPRESS_BOOTSTRAP_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: mysite
-            key: PASSWORD
+        value: mypassword!!
       - name: WORDPRESS_BOOTSTRAP_EMAIL
-        valueFrom:
-          secretKeyRef:
-            name: mysite
-            key: EMAIL 
+        value: user@gmail.com
       - name: WORDPRESS_BOOTSTRAP_TITLE
-        valueFrom:
-          secretKeyRef:
-            name: mysite
-            key: TITLE
+        value: example1
   # extra volumes for the Wordpress container
   volumes: []
   # extra volume mounts for the Wordpress container
@@ -71,18 +59,18 @@ spec:
   # extra env variables for the Wordpress container
   env:
     - name: DB_HOST
-      value: mysite-mysql
+      value: my-cluster-mysql-master
     - name: DB_USER
       valueFrom:
-        secretKeyRef: mysite-mysql
+        secretKeyRef: my-secret
         key: USER
     - name: DB_PASSWORD
       valueFrom:
-        secretKeyRef: mysite-mysql
+        secretKeyRef: my-secret
         key: PASSWORD
     - name: DB_NAME
       valueFrom:
-        secretKeyRef: mysite-mysql
+        secretKeyRef: my-secret
         key: DATABASE
   envFrom: []
 
